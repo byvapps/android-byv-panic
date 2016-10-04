@@ -1,6 +1,7 @@
 package libraries.inlacou.com.panicmode;
 
 import android.content.Context;
+import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -11,6 +12,8 @@ import org.json.JSONObject;
 
 public class Core {
 
+	private static String DEBUG_TAG = Core.class.getName();
+
 	/**
 	 * Example
 	 *  {
@@ -20,7 +23,7 @@ public class Core {
 	 *  }
 	 * @param jsonObject
 	 */
-	public void handleResponse(Context context, JSONObject jsonObject) throws JSONException {
+	public static void handleResponse(Context context, int versionCode, JSONObject jsonObject) throws JSONException {
 		PanicStatus panicStatus = PanicStatus.fromInt(jsonObject.getInt("status"));
 		switch (panicStatus){
 			case Normal:
@@ -31,7 +34,7 @@ public class Core {
 				Utils.closeCompletely();
 				break;
 			case CheckVersion:
-				if(jsonObject.has("minVersionCode") && BuildConfig.VERSION_CODE<jsonObject.getInt("minVersionCode")){
+				if(jsonObject.has("minVersionCode") && versionCode<jsonObject.getInt("minVersionCode")){
 					Utils.openUrl(context, jsonObject.getString("url"));
 					Utils.closeCompletely();
 				}
