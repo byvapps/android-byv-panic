@@ -12,6 +12,11 @@ Make a call to the server (use retrofit or volley, for example). It must provide
 }
 ```
 
+Status:
+   -1: Force block.
+  200: Normal.
+  400: Check minVersionCode.
+
 On response, call:
 
 ```java
