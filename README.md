@@ -20,7 +20,7 @@ Status:
 On response, call:
 
 ```java
-handleResponse(context, jsonObject)
+handleResponse(context, BuildConfig.VERSION_CODE, jsonObject)
 ```
 
 It will check versions and, if needed, close your app completely and open the provided URL.
