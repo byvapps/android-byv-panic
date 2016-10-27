@@ -17,7 +17,7 @@ Status:
   200: Normal.
   400: Check minVersionCode.
 
-On response, call:
+On response, call (WARNING! Import you apps BuildConfig):
 
 ```java
 handleResponse(context, BuildConfig.VERSION_CODE, jsonObject)
