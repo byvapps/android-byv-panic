@@ -19,8 +19,8 @@ public class Core {
 	 *  {
 	 *      "disabled": false,
 	 *      "minVersion": "0",
-	 *      "disabledUrl": "/panic/serverOff",
-	 *      "minVersionUrl": "/panic/needsUpdate"
+	 *      "disabledUrl": "http://www.baseUrl.com/panic/serverOff",
+	 *      "minVersionUrl": "http://www.baseUrl.com/panic/needsUpdate"
 	 *  }
 	 * @param jsonObject
 	 */
