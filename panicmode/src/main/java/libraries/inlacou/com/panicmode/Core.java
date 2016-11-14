@@ -17,28 +17,22 @@ public class Core {
 	/**
 	 * Example
 	 *  {
-	 *      "status": 400,
-	 *      "minVersionCode": 12,
-	 *      "url": "http://www.google.es"
+	 *      "disabled": false,
+	 *      "minVersion": "0",
+	 *      "disabledUrl": "/panic/serverOff",
+	 *      "minVersionUrl": "/panic/needsUpdate"
 	 *  }
 	 * @param jsonObject
 	 */
 	public static void handleResponse(Context context, int versionCode, JSONObject jsonObject) throws JSONException {
-		PanicStatus panicStatus = PanicStatus.fromInt(jsonObject.getInt("status"));
-		switch (panicStatus){
-			case Normal:
-				//Do nothing
-				break;
-			case ForceBlock:
-				Utils.openUrl(context, jsonObject.getString("url"));
+		if(!jsonObject.getBoolean("disabled")){
+			Utils.openUrl(context, jsonObject.getString("disabledUrl"));
+			Utils.closeCompletely();
+		}else{
+			if(jsonObject.has("minVersion") && versionCode<jsonObject.getInt("minVersion")){
+				Utils.openUrl(context, jsonObject.getString("minVersionUrl"));
 				Utils.closeCompletely();
-				break;
-			case CheckVersion:
-				if(jsonObject.has("minVersionCode") && versionCode<jsonObject.getInt("minVersionCode")){
-					Utils.openUrl(context, jsonObject.getString("url"));
-					Utils.closeCompletely();
-				}
-				break;
+			}
 		}
 	}
 
