@@ -1,23 +1,19 @@
 # panicmode
 
-[![](https://jitpack.io/v/inlacou/panicmode.svg)](https://jitpack.io/#inlacou/panicmode)
+[![](https://jitpack.io/v/byvapps/android-byv-panic.svg)](https://jitpack.io/#byvapps/android-byv-panic)
 
 Make a call to the server (use retrofit or volley, for example). It must provide a JSON with at least this:
 
 ```json
 {
-  "status": 400,
-  "minVersionCode": 12,
-  "url": "http://www.google.es"
+  "disabled": false,
+  "minVersion": "0",
+  "disabledUrl": "/panic/serverOff",
+  "minVersionUrl": "/panic/needsUpdate"
 }
 ```
 
-Status:
-   -1: Force block.
-  200: Normal.
-  400: Check minVersionCode.
-
-On response, call (WARNING! Import you apps BuildConfig):
+On response, call (WARNING! Import your apps BuildConfig):
 
 ```java
 handleResponse(context, BuildConfig.VERSION_CODE, jsonObject)
