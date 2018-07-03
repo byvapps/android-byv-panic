@@ -12,8 +12,6 @@ import org.json.JSONObject;
 
 public class Core {
 
-	private static String DEBUG_TAG = Core.class.getName();
-
 	/**
 	 * Example
 	 *  {

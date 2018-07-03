@@ -16,6 +16,7 @@ class Utils {
 
 	static void openUrl(Context context, String url) {
 		Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+		browserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		context.startActivity(browserIntent);
 	}
 }
