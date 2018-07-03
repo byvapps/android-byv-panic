@@ -10,7 +10,7 @@ import org.json.JSONObject;
  * Created by inlacou on 4/10/16.
  */
 
-public class Core {
+public class PanicCore {
 
 	/**
 	 * Example
@@ -23,7 +23,7 @@ public class Core {
 	 * @param jsonObject
 	 */
 	public static void handleResponse(Context context, int versionCode, JSONObject jsonObject) throws JSONException {
-		if(!jsonObject.getBoolean("disabled")){
+		if(jsonObject.getBoolean("disabled")){
 			Utils.openUrl(context, jsonObject.getString("disabledUrl"));
 			Utils.closeCompletely();
 		}else{
